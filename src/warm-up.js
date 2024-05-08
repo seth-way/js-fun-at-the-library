@@ -72,7 +72,7 @@ var book3 = books[2];
 
 // Create a new variable "belowTwoHundred" and assign it to an Array of 12
 // different numbers below two hundred.
-var belowTwoHundred = [1, 2, 3, 4, 4.5, 199, 0, -1000, 19, 19, 19, 19];
+var belowTwoHundred = [1, 2, 3, 4, 4.5, 199, 0, -1000, 19, 20, 21, 22];
 
 // Write the code to access the 5th element of the array, using bracket notation.
 var number5 = belowTwoHundred[4];
