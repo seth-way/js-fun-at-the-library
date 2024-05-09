@@ -1,4 +1,4 @@
-var { shelfBook, unshelfBook, listTitles, searchShelf } = require('./shelf.js');
+var { shelfBook, unshelfBook, searchShelf } = require('./shelf.js');
 
 function createLibrary(name) {
   return {
