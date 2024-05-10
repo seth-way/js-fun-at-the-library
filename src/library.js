@@ -17,17 +17,14 @@ function addBook(library, book) {
 }
 
 function checkoutBook(library, title, genre) {
-  var message;
   var isAvailable = searchShelf(library.shelves[genre], title);
 
   if (isAvailable) {
     unshelfBook(title, library.shelves[genre]);
-    message = `You have now checked out ${title} from the ${library.name}.`;
+    return `You have now checked out ${title} from the ${library.name}.`;
   } else {
-    message = `Sorry, there are currently no copies of ${title} available at the ${library.name}.`;
+    return `Sorry, there are currently no copies of ${title} available at the ${library.name}.`;
   }
-
-  return message;
 }
 
 function takeStock(library, genre) {
