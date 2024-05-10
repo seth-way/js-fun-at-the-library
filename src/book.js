@@ -4,9 +4,9 @@ function createTitle(title) {
 
 function buildMainCharacter(name, age, pronouns) {
   return {
-    name: name,
-    age: age,
-    pronouns: pronouns,
+    name,
+    age,
+    pronouns,
   };
 }
 
@@ -22,10 +22,10 @@ function calculatePageCount(title) {
 
 function writeBook(title, mainCharacter, genre) {
   return {
-    title: title,
-    mainCharacter: mainCharacter,
+    title,
+    mainCharacter,
+    genre,
     pageCount: calculatePageCount(title),
-    genre: genre,
   };
 }
 
