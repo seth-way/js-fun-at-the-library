@@ -2,7 +2,7 @@ var { shelfBook, unshelfBook, searchShelf } = require('./shelf.js');
 
 function createLibrary(name) {
   return {
-    name: name,
+    name,
     shelves: {
       fantasy: [],
       fiction: [],
@@ -12,8 +12,7 @@ function createLibrary(name) {
 }
 
 function addBook(library, book) {
-  var genre = book.genre;
-  shelfBook(book, library.shelves[genre]);
+  shelfBook(book, library.shelves[book.genre]);
 }
 
 function checkoutBook(library, title, genre) {
@@ -22,31 +21,27 @@ function checkoutBook(library, title, genre) {
   if (isAvailable) {
     unshelfBook(title, library.shelves[genre]);
     return `You have now checked out ${title} from the ${library.name}.`;
-  } else {
-    return `Sorry, there are currently no copies of ${title} available at the ${library.name}.`;
   }
+
+  return `Sorry, there are currently no copies of ${title} available at the ${library.name}.`;
 }
 
 function takeStock(library, genre) {
-  var booksCount = 0;
-  var message;
-
-  if (library.shelves[genre] !== undefined) {
+  if (library.shelves[genre]) {
     booksCount = library.shelves[genre].length;
-    message = `There are a total of ${booksCount} ${genre} books at the ${library.name}.`;
-  } else {
-    var currentGenre;
-    var allGenres = Object.keys(library.shelves);
+    return `There are a total of ${booksCount} ${genre} books at the ${library.name}.`;
+  }
+  
+  var currentGenre;
+  var booksCount = 0;
+  var allGenres = Object.keys(library.shelves);
 
-    for (let i = 0; i < allGenres.length; i += 1) {
-      currentGenre = allGenres[i];
-      booksCount += library.shelves[currentGenre].length;
-    }
-
-    message = `There are a total of ${booksCount} books at the ${library.name}.`;
+  for (let i = 0; i < allGenres.length; i += 1) {
+    currentGenre = allGenres[i];
+    booksCount += library.shelves[currentGenre].length;
   }
 
-  return message;
+  return `There are a total of ${booksCount} books at the ${library.name}.`;
 }
 
 module.exports = {
